@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BR 9 Cafe & Restaurant | Rooftop Dining in Bahria Town Rawalpindi</title>
+    <meta name="description" content="Experience premium rooftop dining at BR 9. Open 24/7 in Bahria Town Phase 4. 4.9 Star Google Rating. Private glass cabins & elite ambiance.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    
+    <!-- Internal CSS -->
+    <style>
+        :root {
+            --charcoal: #121212;
+            --gold: #D4AF37;
+            --cream: #F9F7F2;
+            --white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--white);
+            color: var(--charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 5%;
+        }
+
+        .logo { color: var(--gold); font-size: 1.5rem; font-weight: 900; text-decoration: none; }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=2070') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 20px; opacity: 0; transform: translateY(30px); }
+        .hero p { font-size: 1.2rem; max-width: 600px; margin-bottom: 30px; font-weight: 300; opacity: 0; }
+
+        .btn {
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .btn-primary { background: var(--gold); color: var(--charcoal); border: 2px solid var(--gold); }
+        .btn-outline { border: 2px solid var(--white); color: var(--white); }
+        .btn:hover { transform: scale(1.05); filter: brightness(1.1); }
+
+        /* Badges */
+        .badges { display: flex; gap: 20px; margin-top: 50px; flex-wrap: wrap; justify-content: center; }
+        .badge { background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 5px; font-size: 0.8rem; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.2); }
+
+        /* Sections */
+        section { padding: 100px 10%; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .section-title div { width: 50px; height: 3px; background: var(--gold); margin: 0 auto; }
+
+        /* Menu Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-card {
+            background: var(--cream);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .menu-card:hover { transform: translateY(-10px); }
+        .menu-img { height: 200px; background-size: cover; background-position: center; position: relative; }
+        .tag { position: absolute; top: 15px; right: 15px; background: var(--gold); color: white; padding: 5px 12px; font-size: 0.7rem; border-radius: 20px; }
+        .menu-info { padding: 25px; }
+
+        /* Features */
+        .features { background: var(--charcoal); color: var(--white); }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: center; }
+        .feature-item i { font-size: 2rem; color: var(--gold); margin-bottom: 20px; display: block; }
+
+        /* Sticky Footer Bar */
+        .mobile-cta {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: var(--white);
+            display: flex;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+            z-index: 2000;
+            display: none;
+        }
+
+        .mobile-cta a { flex: 1; text-align: center; padding: 15px; text-decoration: none; font-weight: 700; font-size: 0.9rem; }
+        .cta-call { background: var(--charcoal); color: white; }
+        .cta-wa { background: #25D366; color: white; }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate { animation: fadeInUp 1s forwards; }
+
+        @media (max-width: 768px) {
+            section { padding: 60px 5%; }
+            .mobile-cta { display: flex; }
+            body { padding-bottom: 60px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="#" class="logo">BR 9</a>
+        <div style="color: white; font-size: 0.8rem; border: 1px solid var(--gold); padding: 5px 10px; border-radius: 4px;">4.9 ★ GOOGLE</div>
+    </nav>
+
+    <header class="hero">
+        <h1 class="animate" style="animation-delay: 0.2s;">Elevated Dining, <br>Memorable Moments.</h1>
+        <p class="animate" style="animation-delay: 0.4s;">Experience the finest rooftop ambiance in Bahria Town. From sunset views to starlit dinners, every bite is a celebration.</p>
+        <div class="animate" style="animation-delay: 0.6s;">
+            <a href="tel:+92000000000" class="btn btn-primary">Reserve Your Table</a>
+            <a href="#menu" class="btn btn-outline">Explore Menu</a>
+        </div>
+        <div class="badges animate" style="animation-delay: 0.8s;">
+            <div class="badge">Open 24/7</div>
+            <div class="badge">Rooftop View</div>
+            <div class="badge">Glass Cabins</div>
+            <div class="badge">Family Friendly</div>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="section-title">
+            <h2>The BR 9 Story</h2>
+            <div></div>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <p style="font-size: 1.1rem; color: #555;">Located at the heart of Pine Marina, BR 9 isn't just a restaurant; it's a destination. We combine premium ingredients with a 4.9-star hospitality experience that has served thousands of happy families and food enthusiasts.</p>
+        </div>
+    </section>
+
+    <section id="menu" style="background: #fdfdfd;">
+        <div class="section-title">
+            <h2>Signature Flavors</h2>
+            <p>Crafted by Master Chefs</p>
+            <div></div>
+        </div>
+        <div class="menu-grid">
+            <!-- BBQ -->
+            <div class="menu-card">
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&q=80&w=500')">
+                    <span class="tag">Most Loved</span>
+                </div>
+                <div class="menu-info">
+                    <h3>Smokey BBQ Platter</h3>
+                    <p>Authentic charcoal-grilled delights served with mint chutney.</p>
+                    <p style="color: var(--gold); font-weight: 700; margin-top: 10px;">From PKR 1,495</p>
+                </div>
+            </div>
+            <!-- Desi -->
+            <div class="menu-card">
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&q=80&w=500')"></div>
+                <div class="menu-info">
+                    <h3>Handi & Karahi</h3>
+                    <p>Traditional flavors prepared with premium desi ghee.</p>
+                    <p style="color: var(--gold); font-weight: 700; margin-top: 10px;">From PKR 1,850</p>
+                </div>
+            </div>
+            <!-- Fast Food -->
+            <div class="menu-card">
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&q=80&w=500')"></div>
+                <div class="menu-info">
+                    <h3>Gourmet Burgers</h3>
+                    <p>Juicy patties, artisanal buns, and secret signature sauces.</p>
+                    <p style="color: var(--gold); font-weight: 700; margin-top: 10px;">From PKR 850</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-grid">
+            <div class="feature-item">
+                <i>🏙️</i>
+                <h3>Marina View</h3>
+                <p>The best panoramic rooftop view in Bahria Town.</p>
+            </div>
+            <div class="feature-item">
+                <i>💎</i>
+                <h3>Glass Cabins</h3>
+                <p>Private, climate-controlled luxury for intimate dinners.</p>
+            </div>
+            <div class="feature-item">
+                <i>🌙</i>
+                <h3>Open 24/7</h3>
+                <p>Curbing your cravings at any hour of the day or night.</p>
+            </div>
+            <div class="feature-item">
+                <i>👨‍👩‍👧‍👦</i>
+                <h3>Family First</h3>
+                <p>Spacious, secure, and comfortable for all ages.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-title">
+            <h2>Find Us</h2>
+            <div></div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+            <div>
+                <h3 style="margin-bottom: 20px;">Location</h3>
+                <p>Pine Marina Plaza #9, Corniche Road,<br>Phase 4, Bahria Town Rawalpindi</p>
+                <br>
+                <h3 style="margin-bottom: 20px;">Hours</h3>
+                <p>Monday - Sunday: <strong>Open 24 Hours</strong></p>
+                <br>
+                <a href="https://wa.me/92000000000" class="btn btn-primary" style="margin-left: 0;">Book via WhatsApp</a>
+            </div>
+            <div style="height: 300px; border-radius: 15px; overflow: hidden; background: #eee;">
+                <!-- Placeholder for Google Map -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3325.8672!2d73.0912!3d33.5234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfed9d8a1c93f7%3A0x6335a165b4528f80!2sBahria%20Town%20Phase%204!5e0!3m2!1sen!2s!4v1625000000000!5m2!1sen!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: var(--charcoal); color: #888; padding: 50px 10%; text-align: center;">
+        <h2 style="color: var(--white); margin-bottom: 20px;">BR 9</h2>
+        <p>Designed for premium dining experiences.</p>
+        <div style="margin: 20px 0;">
+            <span style="color: var(--gold);">★★★★★</span> 4.9 Rating on Google
+        </div>
+        <p style="font-size: 0.8rem;">&copy; 2026 BR 9 Cafe & Restaurant. All Rights Reserved.</p>
+    </footer>
+
+    <div class="mobile-cta">
+        <a href="tel:+92000000000" class="cta-call">Call Now</a>
+        <a href="https://wa.me/92000000000" class="cta-wa">WhatsApp Booking</a>
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Simple Reveal on Scroll
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.menu-card, .feature-item').forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(20px)";
+            el.style.transition = "all 0.6s ease-out";
+            observer.observe(el);
+        });
+        
+        // Custom animation trigger for observed items
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('.menu-card, .feature-item').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if(rect.top < window.innerHeight - 50) {
+                    el.style.opacity = "1";
+                    el.style.transform = "translateY(0)";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
